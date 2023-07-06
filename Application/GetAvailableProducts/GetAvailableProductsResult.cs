@@ -8,6 +8,6 @@ namespace Application.GetAvailableProducts
 {
     public class GetAvailableProductsResult
     {
-        public string ProductName { get; set; } = "test!!!";
+        public string ProductName { get; set; }
     }
 }

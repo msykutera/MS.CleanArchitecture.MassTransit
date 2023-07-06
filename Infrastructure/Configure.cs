@@ -17,5 +17,16 @@ public static class Configure
         return services;
     }
 
-    public static void AddTransport(this IBusRegistrationConfigurator config) => config.UsingRabbitMq();
+    public static void ConfigureConsumer(this IBusRegistrationConfigurator config)
+    {
+        config.UsingRabbitMq((context, busFactoryConfigurator) =>
+        {
+            busFactoryConfigurator.ConfigureEndpoints(context);
+        });
+    }
+
+    public static void ConfigureProducer(this IBusRegistrationConfigurator config)
+    {
+        config.UsingRabbitMq();
+    }
 }

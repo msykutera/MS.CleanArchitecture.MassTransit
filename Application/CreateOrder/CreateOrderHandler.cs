@@ -1,5 +1,4 @@
 ﻿using Application.Common;
-using Application.Messages;
 using MassTransit;
 
 namespace Application.CreateOrder;

@@ -1,5 +1,6 @@
 using MassTransit;
 using Infrastructure;
+using Application;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -9,7 +10,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddMassTransit(x =>
         {
             x.AddHandlers();
-            x.AddTransport();
+            x.ConfigureConsumer();
         });
     })
     .Build();

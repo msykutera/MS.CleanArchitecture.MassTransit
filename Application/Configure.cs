@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using MassTransit;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Application;
 
 public static class Configure
 {

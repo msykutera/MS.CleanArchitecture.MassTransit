@@ -9,8 +9,9 @@ try
     var client = bus.CreateRequestClient<GetAvailableProductsQuery>(new Uri("exchange:default"));
     await bus.StartAsync();
     var response = await client.GetResponse<GetAvailableProductsResult>(new GetAvailableProductsQuery());
+    var productNames = response.Message.Products.Select(x => x.Name);
 
-    Console.WriteLine(response.Message.Products.Count());
+    Console.WriteLine(string.Join(", ", productNames));
 }
 finally
 {

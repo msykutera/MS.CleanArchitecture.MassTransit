@@ -14,6 +14,7 @@ public static class Configure
         services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("CleanArchitectureDb"));
         services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
         services.AddScoped<AppDbContextInitialiser>();
+
         return services.AddMassTransit(config =>
         {
             config.AddConsumers(Assembly.GetAssembly(typeof(IAppDbContext)));

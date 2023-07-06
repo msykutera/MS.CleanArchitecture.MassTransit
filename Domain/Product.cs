@@ -1,3 +1,13 @@
 ﻿namespace Domain;
 
-public record Product(int Id, string Name, bool IsAvailable);
+public class Product
+{
+    public Product(string name)
+    {
+        Name = name;
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public bool IsAvailable { get; set; }
+}

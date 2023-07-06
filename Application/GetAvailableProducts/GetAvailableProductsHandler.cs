@@ -1,5 +1,6 @@
 ﻿using Application.Common;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.GetAvailableProducts;
 
@@ -14,7 +15,13 @@ public class GetAvailableProductsHandler : IConsumer<GetAvailableProductsQuery>
 
     public async Task Consume(ConsumeContext<GetAvailableProductsQuery> context)
     {
-        var result = new GetAvailableProductsResult { ProductName = "Testdsf3241!!!" };
+        var products = await _dbContext.Products
+            .Where(x => x.IsAvailable)
+            .Select(product => new GetAvailableProductResult(product.Id, product.Name))
+            .ToListAsync(context.CancellationToken);
+
+        var result = new GetAvailableProductsResult(products);
+
         await context.RespondAsync(result);
     }
 }

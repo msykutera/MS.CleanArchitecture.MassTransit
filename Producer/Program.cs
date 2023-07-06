@@ -10,7 +10,7 @@ try
     await bus.StartAsync();
     var response = await client.GetResponse<GetAvailableProductsResult>(new GetAvailableProductsQuery());
 
-    Console.WriteLine(response.Message.ProductName);
+    Console.WriteLine(response.Message.Products.Count());
 }
 finally
 {

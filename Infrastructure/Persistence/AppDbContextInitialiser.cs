@@ -17,9 +17,9 @@ public class AppDbContextInitialiser
         {
             var products = new List<Product>
             {
-                new Product(1, "Ladder", true),
-                new Product(1, "Chess set", true),
-                new Product(1, "Barbell", false)
+                new Product("Ladder") { IsAvailable = false },
+                new Product("Chess set") { IsAvailable = true },
+                new Product("Barbell") { IsAvailable = true }
             };
 
             _context.Products.AddRange(products);

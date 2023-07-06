@@ -1,3 +1,11 @@
 ﻿namespace Domain;
 
-public record Order(int Id, IEnumerable<Product> products, DateTime created);
+public class Order
+{
+    public int Id { get; set; }
+
+    public IEnumerable<Product> Products { get; set; }
+
+    public DateTime Created { get; set; }
+
+}

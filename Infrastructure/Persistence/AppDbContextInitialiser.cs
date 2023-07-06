@@ -1,37 +1,30 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Domain;
 
 namespace Infrastructure.Persistence;
 
 public class AppDbContextInitialiser
 {
-    private readonly ILogger<AppDbContextInitialiser> _logger;
     private readonly AppDbContext _context;
 
-    public AppDbContextInitialiser(ILogger<AppDbContextInitialiser> logger, AppDbContext context)
+    public AppDbContextInitialiser(AppDbContext context)
     {
-        _logger = logger;
         _context = context;
     }
 
     public async Task TrySeedAsync()
     {
-        // Default data
-        // Seed, if necessary
-        //if (!_context.TodoLists.Any())
-        //{
-        //    _context.TodoLists.Add(new TodoList
-        //    {
-        //        Title = "Todo List",
-        //        Items =
-        //        {
-        //            new TodoItem { Title = "Make a todo list 📃" },
-        //            new TodoItem { Title = "Check off the first item ✅" },
-        //            new TodoItem { Title = "Realise you've already done two things on the list! 🤯"},
-        //            new TodoItem { Title = "Reward yourself with a nice, long nap 🏆" },
-        //        }
-        //    });
+        if (!_context.Products.Any())
+        {
+            var products = new List<Product>
+            {
+                new Product(1, "Ladder", true),
+                new Product(1, "Chess set", true),
+                new Product(1, "Barbell", false)
+            };
 
-        //    await _context.SaveChangesAsync();
-        //}
+            _context.Products.AddRange(products);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{386322F2-F9BF-4962-BB7C-492B1CFE75EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer", "Consumer\Consumer.csproj", "{386322F2-F9BF-4962-BB7C-492B1CFE75EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C61AAC93-2FFC-428F-8615-57C41CEBC8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{C61AAC93-2FFC-428F-8615-57C41CEBC8EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{DE8AF9A8-F662-420B-864D-73E6B67D086E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{DE8AF9A8-F662-420B-864D-73E6B67D086E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C2C0C7B3-50D5-42E2-90E9-D0931DB0C27E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{C2C0C7B3-50D5-42E2-90E9-D0931DB0C27E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "Producer\Producer.csproj", "{494B6700-E762-4FA4-813A-69658DDA8B12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Producer", "Producer\Producer.csproj", "{494B6700-E762-4FA4-813A-69658DDA8B12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Messages", "Application.Messages\Application.Messages.csproj", "{33C1665B-A759-4E4F-8E2F-F350CAC8467B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Messages", "Application.Messages\Application.Messages.csproj", "{33C1665B-A759-4E4F-8E2F-F350CAC8467B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{4A951B37-4950-487C-95D5-0A22DC71151D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C61AAC93-2FFC-428F-8615-57C41CEBC8EF} = {4A951B37-4950-487C-95D5-0A22DC71151D}
+		{DE8AF9A8-F662-420B-864D-73E6B67D086E} = {4A951B37-4950-487C-95D5-0A22DC71151D}
+		{C2C0C7B3-50D5-42E2-90E9-D0931DB0C27E} = {4A951B37-4950-487C-95D5-0A22DC71151D}
+		{33C1665B-A759-4E4F-8E2F-F350CAC8467B} = {4A951B37-4950-487C-95D5-0A22DC71151D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F922234-B2CD-44AF-AA09-4BB9A0C08F01}

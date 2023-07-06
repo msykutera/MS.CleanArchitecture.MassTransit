@@ -1,14 +1,15 @@
-using Application.Common;
 using MassTransit;
-using System.Reflection;
+using Infrastructure;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
+        services.AddInfrastructureServices();
+
         services.AddMassTransit(x =>
         {
-            x.AddConsumers(Assembly.GetAssembly(typeof(IAppDbContext)));
-            x.UsingRabbitMq();
+            x.AddHandlers();
+            x.AddTransport();
         });
     })
     .Build();

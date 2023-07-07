@@ -1,5 +1,7 @@
 ﻿using Application.Common;
+using Domain;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.CreateOrder;
 
@@ -12,8 +14,19 @@ public class CreateOrderHandler : IConsumer<CreateOrderCommand>
         _dbContext = dbContext;
     }
 
-    public Task Consume(ConsumeContext<CreateOrderCommand> context)
+    public async Task Consume(ConsumeContext<CreateOrderCommand> context)
     {
-        throw new NotImplementedException();
+        var products = await _dbContext.Products
+            .Where(x => context.Message.ProductIds.Contains(x.Id))
+            .ToListAsync(context.CancellationToken);
+
+        var order = new Order
+        {
+            Created = DateTime.UtcNow,
+            Products = products
+        };
+
+        _dbContext.Orders.Add(order);
+        await _dbContext.SaveChangesAsync(context.CancellationToken);
     }
 }

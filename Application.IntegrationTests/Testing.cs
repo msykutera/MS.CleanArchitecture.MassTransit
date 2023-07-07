@@ -26,7 +26,7 @@ public partial class Testing
             })
             .BuildServiceProvider(true);
 
-        var scope = _provider.CreateScope();
+        using var scope = _provider.CreateScope();
 
         var initialiser = scope.ServiceProvider.GetRequiredService<AppDbContextInitialiser>();
 
@@ -40,7 +40,7 @@ public partial class Testing
     [OneTimeTearDown]
     public async Task RunAfterAnyTests()
     {
-        _provider.Dispose();
+        await _provider.DisposeAsync();
         await Harness.Stop();
     }
 }

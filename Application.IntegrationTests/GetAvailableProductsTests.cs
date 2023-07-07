@@ -10,9 +10,9 @@ namespace Application.IntegrationTests
         public async Task GetAvailableProductsShouldProperlyReturnResults()
         {
             var client = Harness.GetRequestClient<GetAvailableProductsQuery>();
-
             var response = await client.GetResponse<GetAvailableProductsResult>(new());
 
+            response.Message.Should().NotBeNull();
             response.Message.Products.Should().NotBeEmpty();
         }
     }

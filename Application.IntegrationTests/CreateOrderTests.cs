@@ -13,6 +13,7 @@ namespace Application.IntegrationTests
             var command = new CreateOrderCommand(new List<int> { 1, 2 });
             var response = await client.GetResponse<CreateOrderResult>(command);
 
+            response.Message.Should().NotBeNull();
             response.Message.Success.Should().BeTrue();
             response.Message.Id.Should().BeGreaterThan(0);
         }

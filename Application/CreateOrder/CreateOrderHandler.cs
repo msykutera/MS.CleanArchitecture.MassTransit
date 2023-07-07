@@ -27,6 +27,10 @@ public class CreateOrderHandler : IConsumer<CreateOrderCommand>
         };
 
         _dbContext.Orders.Add(order);
-        await _dbContext.SaveChangesAsync(context.CancellationToken);
+
+        var dbResult = await _dbContext.SaveChangesAsync(context.CancellationToken);
+        var result = new CreateOrderResult(dbResult > 0, order.Id);
+
+        await context.RespondAsync(result);
     }
 }

@@ -1,6 +1,5 @@
-﻿namespace Application.GetAvailableProducts
-{
-    public record GetAvailableProductsResult(IEnumerable<GetAvailableProductResult> Products);
+﻿namespace Application.GetAvailableProducts;
 
-    public record GetAvailableProductResult(int Id, string Name);
-}
+public record GetAvailableProductsResult(IEnumerable<GetAvailableProductResult> Products);
+
+public record GetAvailableProductResult(int Id, string Name);

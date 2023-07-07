@@ -18,6 +18,7 @@ public class GetAvailableProductsHandler : IConsumer<GetAvailableProductsQuery>
         var products = await _dbContext.Products
             .Where(x => x.IsAvailable)
             .Select(product => new GetAvailableProductResult(product.Id, product.Name))
+            .AsNoTracking()
             .ToListAsync(context.CancellationToken);
 
         var result = new GetAvailableProductsResult(products);
